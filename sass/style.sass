@@ -1,6 +1,11 @@
+@import "variables"
+
+*
+    text-decoration: none
+
 html
     font-family: 'Rajdhani', sans-serif  
-
+    
 .container
     max-width: 1360px
     margin: 0 auto
@@ -8,27 +13,69 @@ html
 .content-wrapper
     width: 100%
     display: flex
+    position: relative
+
+.lining-box
+    width: 1316px
+    height: 768px
 
 .slider-box
     width: 600px
+    position: fixed
 
-.slider-img
-    display: block
+.slider-box__inner
+    position: relative
+
+.slick-slide
+    height: 768px !important
+
+.slick-prev,.slick-next
+    position: absolute
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 0
+    left: 52px
+    bottom: 32px
+    z-index: 2
+    width: 32px
+    height: 32px
+    border-radius: 100%
+    background: none
+    border: none
+    color: #fff
+    font-size: 20px
+    &:hover
+        border: 1px solid #fff
+    &:active
+        background: #fff
+        color: #8A94A6
+.slick-next
+    left: 100px
+    
 
 .info-box
-    width: 100%
+    max-width: 100%
     padding: 56px 52px 0 92px
+    margin-left: auto
+    margin-right: 0
+
+.logo_link
+    position: absolute
+    z-index: 1
+    top: 32px
+    left: 52px 
 
 .overview-item
     border-bottom: 1px solid #e1e6ed
     padding-bottom: 7px
     &__heading
         margin: 0 0 24px
-        font-size: 16px
+        font-size: 1em
         font-weight: 700
         line-height: 1.5
         text-align: left
-        color: #8a94a6
+        color: $colorHeadingText         
         text-transform: uppercase
     &__name-item
         margin: 0 0 16px
@@ -50,19 +97,24 @@ html
     display: flex
     flex-wrap: wrap
     align-items: flex-start
-    padding: 16px 0 15px
+    padding: 16px 24px 15px 0
     border-bottom: 1px solid #e1e6ed
     &__colour
-        margin-right: 56px
+        margin-right: 53px
     &__colour-heading,
-    &__size-heading
+    &__size-heading,
+    &__quantity-heading,
+    &__cost-heading
         margin: 0
-        font-size: 16px
+        font-size: 1em
         font-weight: 700
         line-height: 1.5
         text-align: left
         color: #8a94a6
         text-transform: uppercase
+    &__colour-heading,
+    &__size-heading
+        margin-bottom: 8px
     &__colour-choice
         display: flex
         .wrapper-darkBlueGrey,
@@ -73,9 +125,11 @@ html
             padding: 3px
             border-radius: 100%
             cursor: pointer
-            margin-right: 6px
+            margin-right: 12px
             &:hover
-                outline: 1px solid #8A94A6                
+                outline: 1px solid #8A94A6
+        .wrapper-denim
+            margin-right: 0                            
         .wrapper-darkBlueGrey
             &:focus
                 outline: 1px solid #192b3f
@@ -102,7 +156,8 @@ html
             border-radius: 100%
     &__size-choice
         display: flex
-        #xs,#s,#m,#l,#xl
+        margin-right: 24px
+        .size
             display: flex
             justify-content: center
             align-items: center
@@ -111,7 +166,7 @@ html
             border-radius: 100%
             padding: 3px
             margin-right: 12px
-            font-size: 16px
+            font-size: 1em
             font-weight: 500
             line-height: 1.5
             color: #8a94a6
@@ -122,27 +177,346 @@ html
             &:focus
                outline: 1px solid #192B3F
                color: #192B3F
+        #xl
+            margin-right: 0  
         .no-product
-            color: #e1e6ed !important
+            color: #e1e6ed 
             &:hover                
-                outline: none !important
+                outline: none 
             &:focus
-               outline: none !important
+               outline: none 
     &__size-guide
-        margin-top: 28px
+        margin-top: 34px
         padding: 2px 12px
         border: solid 1px #c9b8a8
         border-radius: 24px
         text-decoration: none
-        font-size: 16px
+        font-size: 1em
         font-weight: 500
         line-height: 1.5
         color: #c9b8a8
+    &__quantity
+        margin: 32px 102px 0 0
+        &-heading
+            margin-bottom: 12px
+        &-choice
+            display: flex
+            align-items: center
+            .decrease-counter,
+            .increase-counter
+                position: relative
+                display: flex
+                justify-content: center
+                align-items: center  
+                width: 28px
+                height: 28px
+                background: none
+                border-radius: 100%
+                border: none
+                border: 1px solid black
+                cursor: pointer
+            .decrease-counter::after
+                content: ''
+                width: 10px
+                height: 1px
+                background: #192b3f
+            .increase-counter:before
+                content: ''
+                width: 10px
+                height: 1px
+                background: #192b3f
+            .increase-counter:after
+                content: ''
+                position: absolute
+                right: 50%
+                transform: translateX(50%)
+                width: 1px
+                height: 10px
+                background: #192b3f
+            .counter
+                margin: 0 13px
+                font-size: 1.5em
+                font-weight: 500
+                line-height: 1
+                color: #8a94a6
+    &__cost
+        margin-top: 32px
+        &-heading
+            margin-bottom: 6px
+        &-price
+            font-size: 40px
+            font-weight: 500
+            line-height: 1
+            color: #c9b8a8
+            .fractional-part
+                font-size: 28px
+                color: #8a94a6
+
+.details-item
+    padding: 24px 0 72px
+    &__heading
+        margin-bottom: 8px
+        font-size: 1em
+        font-weight: 700
+        line-height: 1.5
+        color: #8a94a6
+    &__description
+        margin-bottom: 8px
+        font-size: 1em
+        font-weight: 500
+        line-height: 1.5
+        color: rgba(25,43,63, 0.8)
+    &__composition
+        font-size: 1em
+        font-weight: 500
+        line-height: 1.25
+        color: #8a94a6
+
+.btn
+    display: block
+    width: 100%
+    height: 56px
+    padding: 10px 0px
+    border: none
+    background-color: #192b3f
+    font-size: 1.5em
+    font-weight: 500
+    line-height: 1.33
+    color: rgb(255, 255, 255)
+    cursor: pointer
+    &:hover
+        background: #2E4055
+    &:active
+        background: #3B536D
+
         
-  
+
+.delivery-info
+    padding-top: 32px
+    border-bottom: 1px solid #e1e6ed        
+    &__heading
+        display: block
+        position: relative
+        padding-bottom: 7px
+        font-size: 1.5em
+        font-weight: 500
+        line-height: 1.33
+        color: #192b3f
+        &::-webkit-details-marker
+            display: none
+        &::before
+            content: "\f067"
+            font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands'
+            position: absolute
+            right: 6px
+            top: 14px
+            font-size: 12px
+            font-weight: 600
+            color: #192b3f
+    &[open] .delivery-info__heading::before
+            content: "\f068"
+            font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands'
+            position: absolute
+            right: 6px
+            top: 14px
+            font-size: 12px
+            font-weight: 600
+            color: #192b3f
+    &__description
+        font-weight: 500
+        font-size: 16px
+        line-height: 24px
+        color: #8A94A6
+
+.return-info
+    padding-top: 16px
+    border-bottom: 1px solid #e1e6ed
+    &__heading
+        display: block
+        position: relative
+        padding-bottom: 7px
+        font-size: 24px
+        font-weight: 500
+        line-height: 1.33
+        color: #192b3f
+        &::-webkit-details-marker
+            display: none
+        &::before
+            content: "\f067"
+            font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands'
+            position: absolute
+            right: 6px
+            top: 14px
+            font-size: 12px
+            font-weight: 600
+            color: #192b3f
+    &[open] .return-info__heading::before
+            content: "\f068"
+            font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands'
+            position: absolute
+            right: 6px
+            top: 14px
+            font-size: 12px
+            font-weight: 600
+            color: #192b3f
+    &__description
+        font-weight: 500
+        font-size: 1em
+        line-height: 24px
+        color: #8A94A6
+
+.similar-collections
+    padding-top: 40px
+    &__heading
+        margin: 0 0 8px 0
+        font-size: 1em
+        font-weight: 700
+        line-height: 1.5
+        color: #8a94a6
+        text-transform: uppercase   
+    &__wrapper
+        display: flex
+        justify-content: space-between
+    &__left-box,
+    &__right-box
+        width: 296px
+        height: 160px
+    .kinfsman-link,
+    .denim-link
+        display: block
+        position: relative
+        width: 100%
+        height: 100%
+    .kingsman-img,
+    .denim-img
+        width: 100%
+        height: 100%
+        border-radius: 5px
+    .kingsman-heading,
+    .denim-heading
+        margin: 0
+        position: absolute
+        bottom: 28px
+        left: 16px
+        font-size: 1.5em
+        font-weight: normal
+        line-height: 1
+        color: #FFFFFF
+    .kingsman-description,
+    .denim-description
+        margin: 0   
+        position: absolute
+        bottom: 12px
+        left: 16px
+        font-size: 0.875em
+        font-weight: 600
+        line-height: 1.14
+        color: rgba(255,255,255,0.5)
+        
+.subscribe-box
+    padding-top: 64px
+    &__heading
+        margin: 0
+        font-size: 2em
+        font-weight: 500
+        line-height: 1.25
+        color: #192b3f
+    &__description
+        margin: 0 0 24px 0
+        font-size: 20px
+        font-weight: 500
+        line-height: 1.6
+        color: rgba(138,148,166, 0.8)
+    input[type="text"],input[type="email"]
+        padding: 0 16px
+        display: block
+        width: 456px
+        height: 44px
+        background-color: rgba(225, 230, 237, 0.2)
+        border-radius: 1px
+        border: none
+        font-size: 1em
+        font-weight: 500
+        line-height: 2.5
+        color: #8A94A6
+        &::placeholder
+            color: #8A94A6
+            font-size: 1em
+            font-weight: 500
+            line-height: 2.5
+        &:focus
+            outline: 1px solid #192b3f 
+    input[type="text"]
+        margin-bottom: 16px
+    input[type="email"]
+        margin-bottom: 12px
+.wrapper-radio
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    border: none
+    padding: 0
+    margin-bottom: 40px
+.choose-gender
+    display: inline-block
+    margin: 0
+    font-size: 1.25em
+    font-weight: 500
+    line-height: 1.6
+    color: #8a94a6
+#male,#female
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+    margin: 0 8px 0 24px
+    border-radius: 50%
+    width: 20px
+    height: 20px
+    border: 1px solid #e1e6ed
+    &:checked
+        background: url(../image/desktop_images/radio/radio.png) center center no-repeat
+label[for="male"],label[for="female"]
+    font-size: 1em
+    font-weight: 500
+    line-height: 1.5
+    color: #192b3f
+
+.wrapper-checkbox
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    border: none
+    padding: 0
+    margin-bottom: 16px
+    input[type="checkbox"]
+        position: absolute
+        z-index: -1
+        opacity: 0
+        &+label[for="lookChecked"]
+            font-size: 1em
+            font-weight: 500
+            line-height: 1.5
+            color: rgb(25, 43, 63)
+            &::before
+                content: ""
+                display: inline-block
+                width: 1.25em
+                height: 1.25em
+                border: 1px solid #e1e6ed
+                background-repeat: no-repeat
+                background-position: center center
+                background-size: 50% 50%
+    input[type="checkbox"]:checked+label[for="lookChecked"]::before
+        content: "\f00c"
+        font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands'
+        color: white
+        font-size: 12px
+        font-weight: 600
+        background-color: #192b3f
+
+@import "media"
 
 
-            
-
+    
 
 

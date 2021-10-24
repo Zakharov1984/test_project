@@ -9,13 +9,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <script src="https://kit.fontawesome.com/c370fdca79.js" crossorigin="anonymous"></script>
     <title>GUSSI</title>
 </head>
 <body>
     <div class="container">
         <main class="content-wrapper">
+            <div class="lining-box"></div>
             <article class="slider-box">
-                <img class="slider-img" src="image/desktop_images/slider_images/image_one.jpg" alt="">
+                <a href="#" class="logo_link"><img src="image/desktop_images/logo/Logo.png" alt="logo" class="logo_image"></a>
+                <div class="slider-box__inner">
+                    <div>
+                        <img src="image/desktop_images/slider_images/image_one.jpg" alt="">
+                        <p></p>
+                    </div>
+                    <div>
+                        <img src="image/desktop_images/slider_images/image_two.jpg" alt="">
+                    </div>
+                    <div>
+                        <img src="image/desktop_images/slider_images/image_three.jpg" alt="">
+                    </div>
+                </div>
             </article>
             <article class="info-box">
                 <section class="overview-item">
@@ -45,38 +60,29 @@
                     <div class="customize-item__size">
                         <h2 class="customize-item__size-heading">Size</h2>
                         <div class="customize-item__size-choice">
-                            <div id="xs" tabindex="0">XS</div>
-                            <div id="s" tabindex="0">S</div>
-                            <div id="m" tabindex="0">M</div>
-                            <div id="l" tabindex="0">L</div>
-                            <div id="xl" class="no-product" tabindex="0">XL</div>
+                            <div class="size" id="xs" tabindex="0">XS</div>
+                            <div class="size" id="s" tabindex="0">S</div>
+                            <div class="size" id="m" tabindex="0">M</div>
+                            <div class="size" id="l" tabindex="0">L</div>
+                            <div class="size no-product" id="xl" tabindex="0">XL</div>
 
                         </div>
                     </div>
                     <a href="#" class="customize-item__size-guide">Size guide</a>
                     <div class="customize-item__quantity">
-                        
+                        <div class="customize-item__quantity-heading">Quantity</div>
+                        <div class="customize-item__quantity-choice">
+                           <button class="decrease-counter"></button>
+                           <div class="counter">1</div>
+                           <button class="increase-counter"></button> 
+                        </div>
                     </div>
-                    <div class="cost"></div>
+                    <div class="customize-item__cost">
+                        <div class="customize-item__cost-heading">cost</div>
+                        <div class="customize-item__cost-price">$<span class="whole-part">120</span><span class="fractional-part">.00</span></div>
+                    </div>
                 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <!-- <section class="details-item">
+                <section class="details-item">
                     <div class="details-item__heading">PRODUCT DETAILS</div>
                     <div class="details-item__description">
                         Look out for its standout party dresses, feminine details, statement jackets and cool denim 
@@ -84,9 +90,70 @@
                         and swimwear ranges.
                     </div>
                     <div class="details-item__composition">63% Viscose, 37% Polyamide.</div>
-                </section> -->
-            </article>
+                </section>
+                <button class="btn" id="orderNow">Order now</button>
+                <details class="delivery-info">
+                    <summary class="delivery-info__heading">Delivery</summary>
+                    <p class="delivery-info__description">
+                        Delivered on or before Monday, 25 February 2019<br>
+                        Note: Subject to placing your order before specific cut-off times. Details available in checkout.<br><br>
+                        For free delivery – spend over £18.08
+                    </p>
+                </details>
+                <details class="return-info">
+                    <summary class="return-info__heading">Return</summary>
+                    <p class="return-info__description">
+                        Return through your local Boxberry store available in over 2,300 locations.<br>
+                        You can create your return on the carrier website by clicking the create return link.<br>
+                        Open 7 days a week, early until late.
+                    </p>
+                </details>
+                <article class="similar-collections">
+                    <h2 class="similar-collections__heading">Similar Collections</h2>
+                    <div class="similar-collections__wrapper">
+                        <section class="similar-collections__left-box">
+                            <a href="" class="kinfsman-link">
+                                <img src="image/desktop_images/similar_collections/Kingsman.jpg" alt="kingsman" class="kingsman-img">
+                                <h3 class="kingsman-heading">Kingsman style</h3>
+                                <p class="kingsman-description">More silk, more freedom</p>
+                            </a>
+                        </section>
+                        <section class="similar-collections__right-box">
+                            <a href="" class="denim-link">
+                                <img src="image/desktop_images/similar_collections/Denim.jpg" alt="denim" class="denim-img">
+                                <h3 class="denim-heading">Denim goddess</h3>
+                                <p class="denim-description">More denim, more freedom</p>
+                            </a>
+                        </section>
+                    </div>
+                </article>
+                <form action="#" class="subscribe-box">
+                    <h2 class="subscribe-box__heading">Subscribe our newsletter</h2>
+                    <p class="subscribe-box__description">Get notified about new collections of Gussi Store</p>
+                    <input type="text" placeholder="Enter your name" name="name">
+                    <input type="email" placeholder="Enter your e-mail" name="email">
+                    <fieldset class="wrapper-radio">
+                        <p class="choose-gender">Choose your gender:</p>
+                        <input type="radio" name="gender" value="male" id="male">
+                        <label for="male">Male</label>
+                        <input type="radio" name="gender" value="female" id="female">
+                        <label for="female">Female</label>
+                    </fieldset>
+                    <fieldset class="wrapper-checkbox">
+                        <input type="checkbox" name="look" id="lookCheked" checked>
+                        <label for="lookChecked">
+                            Look out for its standout party dresses, feminine details
+                        </label>
+                    </fieldset>
+                    <button class="btn" id="subscribe">Subscribe Gussi</button>                    
+                </form>
+            </article>           
         </main>
     </div>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>     
+
